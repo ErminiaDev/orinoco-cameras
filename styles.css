@@ -1,0 +1,14 @@
+.header-image {
+    position: relative;
+    background: black;
+}
+
+.header-image img {
+    opacity: 0.4;
+}
+
+.header-image .overlay-text{
+    width: 100%;
+    position: absolute;
+    bottom: 30%;
+}
