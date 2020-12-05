@@ -11,17 +11,21 @@ let cameras;
     if (this.status == 200) {
       var cameras = JSON.parse(this.responseText);
       for (var i in cameras) {
+
+        
+
         let rowDiv = document.getElementById("row");
 
         let colDiv = document.createElement("div");
         colDiv.classList.add("col-4", "del");
+        colDiv.id = "card" + (Number([i])+1);
         rowDiv.appendChild(colDiv);
 
         let cardDiv = document.createElement("div");
         // cardDiv.style.width = "350px";
         // cardDiv.style.height = "400px";
         cardDiv.classList.add("card", "bg-light", "mb-3", "del");
-        cardDiv.id = "card" + (Number([i])+1);
+        // cardDiv.id = "card" + (Number([i])+1);
         colDiv.appendChild(cardDiv);
 
         let cardHeader = document.createElement("div");
@@ -47,38 +51,93 @@ let cameras;
         cardPrice.innerHTML = cameras[i].price + ' €';
         cardBody.appendChild(cardPrice);
 
-        let cardSelect = document.createElement("a");
-        cardSelect.classList.add("btn", "btn-dark", "my-3");
-        cardSelect.id = "btn" + (Number([i])+1);
-        cardSelect.href = "product.html"
-        cardSelect.innerHTML = "Voir les détails";
-        cardBody.appendChild(cardSelect);
+        let cardBtn = document.createElement("a");
+        cardBtn.classList.add("btn", "btn-dark", "my-3");
+        cardBtn.id = "btn" + (Number([i])+1);
+        cardBtn.href = 'product.html';
+        cardBtn.innerHTML = "Voir les détails";
+        cardBody.appendChild(cardBtn); 
+
+        /* const cardLinkURL = function(){
+          const mainURL = 'product.html';
+          const queryParams = new URLSearchParams ();
+          for(const [key, value] of queryParams) {
+            console.log(`${key} => ${value}`)
+            // if(cardDiv.hasOwnProperty(key)) {
+            //   queryParams.set(key, cardDiv[key])
+            // }
+          }
+          // console.log(queryParams);
+          console.log(`${mainURL}?` + queryParams.toString());
+        };
+        cardLinkURL();
+        
+        // console.log(cardDiv);
+        Object.values(cardDiv); */
         
       }
+
       let camera1 = document.getElementById("card1");
       let camera2 = document.getElementById("card2");
       let camera3 = document.getElementById("card3");
       let camera4 = document.getElementById("card4");
       let camera5 = document.getElementById("card5");
+      
+      cardArr = [camera1, 
+      camera2,
+      camera3,
+      camera4,
+      camera5 ];
 
-      /* btn1.addEventListener("click", function(){
-        sessionStorage.setItem(camera1);
-      }) */
+      let cameraBtn1 = document.getElementById("btn1");
+      let cameraBtn2 = document.getElementById("btn2");
+      let cameraBtn3 = document.getElementById("btn3");
+      let cameraBtn4 = document.getElementById("btn4");
+      let cameraBtn5 = document.getElementById("btn5");
+
+      btnArr = [cameraBtn1, 
+      cameraBtn2,
+      cameraBtn3,
+      cameraBtn4,
+      cameraBtn5 ];
+
+      
+      btnArr[0].addEventListener('click', function(){
+        clickedCard = cardArr[0].innerHTML;
+        localStorage.setItem('clickedCard', clickedCard);
+      });
+      btnArr[1].addEventListener('click', function(){
+        clickedCard = cardArr[1].innerHTML;
+        localStorage.setItem('clickedCard', clickedCard);
+      });
+      btnArr[2].addEventListener('click', function(){
+        clickedCard = cardArr[2].innerHTML;
+        localStorage.setItem('clickedCard', clickedCard);
+      });
+      btnArr[3].addEventListener('click', function(){
+        clickedCard = cardArr[3].innerHTML;
+        localStorage.setItem('clickedCard', clickedCard);
+      });
+      btnArr[4].addEventListener('click', function(){
+        clickedCard = cardArr[4].innerHTML;
+        localStorage.setItem('clickedCard', clickedCard);
+      });
       
 
+      /* for(i=0; i<5; i++){
+        (function(){
+          btnArr[i].addEventListener('click', function(){
+            clickedCard = cardArr[i].innerHTML;
+            localStorage.setItem('clickedCard', clickedCard);
+          })
+        }());
+      };
+ */
 
-      /* let cards = document.getElementsByClassName("card");
-      console.log(cards); */
-
-      /* for(i=0; i < cards.length; i++) {
-          let cardID = [i];
-          cardDiv.id = "card" + cardID;
-          console.log(cardDiv.id)
-      } */
     }
   };
 
-  console.log(cameras);
+  // console.log(cameras);
   xhr.send();
 
 

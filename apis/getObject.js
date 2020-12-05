@@ -1,14 +1,11 @@
+console.log(localStorage);
+const selectedCard = localStorage.getItem('clickedCard');
+console.log(selectedCard);
 
-var xhr = new XMLHttpRequest();
-  xhr.open("GET", "index.html", true);
+let rowDiv = document.getElementById("row");
 
-  xhr.onload = function (){
-    // console.log(this.status);
-    if (this.status == 200) {
-      var indexContent = this.responseText;
-      console.log(indexContent);
-    }
-  };
+let colDiv = document.createElement("div");
+colDiv.classList.add("col-4", "del");
+rowDiv.appendChild(colDiv);
 
-  
-  xhr.send();
+rowDiv.innerHTML = selectedCard;
