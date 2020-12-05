@@ -22,10 +22,8 @@ let cameras;
         rowDiv.appendChild(colDiv);
 
         let cardDiv = document.createElement("div");
-        // cardDiv.style.width = "350px";
-        // cardDiv.style.height = "400px";
         cardDiv.classList.add("card", "bg-light", "mb-3", "del");
-        // cardDiv.id = "card" + (Number([i])+1);
+        cardDiv.id = cameras[i]._id;
         colDiv.appendChild(cardDiv);
 
         let cardHeader = document.createElement("div");
