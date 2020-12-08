@@ -27,10 +27,7 @@ let cameras;
           let allLenses = cameras.lenses;
           console.log(allLenses);
 
-          // console.log(allBtns);
-
           let select_lense = document.getElementById("select_lense");
-          // let lense_option = document.createElement("option");
 
           for(i=0; i < allLenses.length; i++){
             let lense_option = document.createElement("option");
@@ -38,17 +35,7 @@ let cameras;
             lense_option.innerHTML += allLenses[i];
             console.log(select_lense);
           }
-
-
-
-
-
-
-          /* allLenses.forEach(function(lense){
-            lense_option.innerHTML = lense;
-            console.log(lense_option);
-          }) */
-
+          
       }
   };
 
