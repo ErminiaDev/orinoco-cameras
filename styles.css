@@ -12,3 +12,15 @@
     position: absolute;
     bottom: 30%;
 }
+
+#cam_photo {
+    width: 350px;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#cam_title {
+    font-size: 1.4rem;
+}

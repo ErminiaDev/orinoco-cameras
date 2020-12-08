@@ -20,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <div class="navbar-nav ml-auto">
           <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
           <a class="nav-link" href="#">Panier</a>
           <a class="nav-link" href="#">Commande</a>
@@ -29,18 +29,38 @@
     </nav>
 
 
-  <!-- <div class="header-image">
-    <img src="images/jumbotron2.jpg" alt="vintage cameras" class="img img-fluid d-block">
-    <div class="overlay-text text-white d-block text-center">
-      <h1 class="display-4">Amateurs de cameras vintage?</h1>
-      <p class="lead">Notre sélection comprends les modèles les plus rares et les plus recherchés du moment</p>
-    </div>
-  </div> -->
-
   <h2 class="m-5 text-center ">Détail du modèle</h2>
     
   <div class="container">
-    <div class="row my-5" id="row"></div>
+    <div class="row my-5 py-5" id="row">
+      <div class="col-4 ml-5 pl-5">
+        <div class="card bg-light mb-3">
+          <div class="card-header">
+            <h2 id="cam_title"></h2>
+          </div>
+          <div id="cam_photo"></div>
+        </div>
+      </div>
+      <div class="col-6 mr-5 pr-5">
+        <div class="row pt-5">
+          <div class="col-6 ml-auto">
+            <p id="cam_description"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3 ml-auto">
+            <form action="">
+              <label for=""></label>
+              <select class="form-control" name="" id="select_lense">
+
+              </select>
+              <label for=""></label>
+              <input class="form-control" type="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
     
 

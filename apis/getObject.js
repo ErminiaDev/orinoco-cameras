@@ -1,20 +1,42 @@
 console.log(localStorage);
-const selectedCard = localStorage.getItem('clickedCard');
-console.log(selectedCard);
+const selectedCardId = localStorage.getItem('clickedBtnId');
 
-let rowDiv = document.getElementById("row");
+camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
 
-let colDiv = document.createElement("div");
-colDiv.classList.add("col-4", "mx-auto", "del");
-rowDiv.appendChild(colDiv);
+let cameras;
 
-colDiv.innerHTML = selectedCard;
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", camerasUrl, true);
 
-let card = document.querySelector(".card");
+  xhr.onload = function (){
+    // console.log(this.status);
+    //FIXME ne pas oublier les promises au lieu des callbacks
+    if (this.status == 200) {
+      var cameras = JSON.parse(this.responseText);
 
-let cardId = card.id;
 
-console.log(cardId);
+          cam_title.innerHTML = cameras.name;
 
-//retrieving info with camera's id?
-//looping through the different objects in the API to match ID?
+          // let cam_photo = document.getElementById("cam_photo")
+          cam_photo.style.backgroundImage = "url(" +cameras.imageUrl + ")";
+          
+          cam_description.innerHTML = cameras.description;
+     
+
+          let allLenses = cameras.lenses;
+          console.log(allLenses);
+
+          // console.log(allBtns);
+
+          let select_lense = document.getElementById("select_lense");
+
+          allLenses.forEach(function(){
+            let newOption = document.createElement("option");
+            newOption.innerHTML = allLenses[i];
+            console.log(newOption.innerHTML);
+            newOption.appendChild(select_lense);
+          }); 
+      }
+  };
+
+  xhr.send();
