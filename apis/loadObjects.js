@@ -45,7 +45,7 @@ let cameras;
 
         let cardPrice = document.createElement("div");
         cardPrice.classList.add("card-text", "lead", "del");
-        cardPrice.innerHTML = cameras[i].price + ' €';
+        cardPrice.innerHTML = cameras[i].price + ' €'; //FIXME add commas to make the number smaller
         cardBody.appendChild(cardPrice);
 
         let cardBtn = document.createElement("a");

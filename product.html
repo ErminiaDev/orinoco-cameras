@@ -21,7 +21,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="#">Produits</a>
           <a class="nav-link" href="#">Panier</a>
           <a class="nav-link" href="#">Commande</a>
         </div>
@@ -33,7 +34,7 @@
     
   <div class="container">
     <div class="row my-5 py-5" id="row">
-      <div class="col-4 ml-5 pl-5">
+      <div class="col-4 ml-5">
         <div class="card bg-light mb-3">
           <div class="card-header">
             <h2 id="cam_title"></h2>
@@ -41,18 +42,18 @@
           <div id="cam_photo"></div>
         </div>
       </div>
-      <div class="col-6 mr-5 pr-5">
-        <div class="row pt-5">
-          <div class="col-6 ml-auto">
-            <p id="cam_description"></p>
+      <div class="col-6 ">
+        <div class="row pt-4">
+          <div class="col-8 ml-auto pr-5">
+            <p id="cam_description" class="text-right"></p>
+            <p id="cam_price" class="lead text-right ml-5"></p>
           </div>
         </div>
         <div class="row">
-          <div class="col-3 ml-auto">
+          <div class="col-5 ml-auto pr-5">
             <form action="">
               <label for=""></label>
               <select class="form-control" name="" id="select_lense">
-
               </select>
               <label for=""></label>
               <input class="form-control" type="submit">

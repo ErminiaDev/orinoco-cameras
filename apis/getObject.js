@@ -21,7 +21,8 @@ let cameras;
           cam_photo.style.backgroundImage = "url(" +cameras.imageUrl + ")";
           
           cam_description.innerHTML = cameras.description;
-     
+
+          cam_price.innerHTML = cameras.price + "€";//FIXME add commas to make the number smaller
 
           let allLenses = cameras.lenses;
           console.log(allLenses);
@@ -29,13 +30,25 @@ let cameras;
           // console.log(allBtns);
 
           let select_lense = document.getElementById("select_lense");
+          // let lense_option = document.createElement("option");
 
-          allLenses.forEach(function(){
-            let newOption = document.createElement("option");
-            newOption.innerHTML = allLenses[i];
-            console.log(newOption.innerHTML);
-            newOption.appendChild(select_lense);
-          }); 
+          for(i=0; i < allLenses.length; i++){
+            let lense_option = document.createElement("option");
+            select_lense.appendChild(lense_option);
+            lense_option.innerHTML += allLenses[i];
+            console.log(select_lense);
+          }
+
+
+
+
+
+
+          /* allLenses.forEach(function(lense){
+            lense_option.innerHTML = lense;
+            console.log(lense_option);
+          }) */
+
       }
   };
 
