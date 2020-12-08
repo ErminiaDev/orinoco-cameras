@@ -1,4 +1,4 @@
-console.log(localStorage);
+// console.log(localStorage);
 const selectedCardId = localStorage.getItem('clickedBtnId');
 
 camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
@@ -24,17 +24,35 @@ let cameras;
 
           cam_price.innerHTML = cameras.price + "€";//FIXME add commas to make the number smaller
 
-          let allLenses = cameras.lenses;
-          console.log(allLenses);
+          let cartBtn = document.querySelector(".btn");
+          let cameraId = cartBtn.id;
+          cameraId = cameras._id;
+          console.log(cameraId);
 
-          let select_lense = document.getElementById("select_lense");
+          let allLenses = cameras.lenses;
+          // console.log(allLenses);
+
+          let lenseSelectList = document.getElementById("select_lense");
 
           for(i=0; i < allLenses.length; i++){
-            let lense_option = document.createElement("option");
-            select_lense.appendChild(lense_option);
-            lense_option.innerHTML += allLenses[i];
-            console.log(select_lense);
+            let lenseOption = document.createElement("option");
+            lenseSelectList.appendChild(lenseOption);
+            lenseOption.innerHTML += allLenses[i];
+            lenseOption.setAttribute('value',`${[i]}`);
+            // console.log(lense_selectList);
           }
+
+           let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
+           console.log(selectedLense.value );
+           console.log(selectedLense.text );
+
+           cartBtn.addEventListener('click', function(){
+            console.log(selectedLense);
+            localStorage.setItem('cameraId', cameraId);
+            localStorage.setItem('selectedLense', selectedLense.value);
+           });
+
+
           
       }
   };
