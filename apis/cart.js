@@ -1,3 +1,5 @@
+//IMPORTANT comment the code to explain what it does
+
 let cameraId = localStorage.getItem('cameraId');
 let selectedLense = localStorage.getItem('selectedLense')
 
@@ -14,8 +16,10 @@ let cameras;
 
   xhr.onload = function (){
     // console.log(this.status);
-    //FIXME ne pas oublier les promises au lieu des callbacks
+    //FIXMEpromises instead of callbacks
+
     if (this.status == 200) {
+        
       var cameras = JSON.parse(this.responseText);
 
       selectedCam.textContent = cameras.name;
@@ -24,7 +28,7 @@ let cameras;
       camLense.textContent = `${cameras.lenses[selectedLense]}`;
       console.log(selectedLense);
 
-      camPrice.textContent = cameras.price+ "€";
+      camPrice.textContent = cameras.price+ "€";//FIXME add commas to convert the number from cents to €
       console.log(camPrice.textContent);
 
     }

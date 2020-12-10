@@ -1,3 +1,4 @@
+//IMPORTANT comment the code to explain what it does
 
 camerasUrl = "http://localhost:3000/api/cameras";
 
@@ -17,7 +18,7 @@ let cameras;
         let rowDiv = document.getElementById("row");
 
         let colDiv = document.createElement("div");
-        colDiv.classList.add("col-4", "del");
+        colDiv.classList.add("col-4", "del");//FIXME delete .del classes everywhere
         rowDiv.appendChild(colDiv);
 
         let cardDiv = document.createElement("div");
@@ -45,7 +46,7 @@ let cameras;
 
         let cardPrice = document.createElement("div");
         cardPrice.classList.add("card-text", "lead", "del");
-        cardPrice.innerHTML = cameras[i].price + ' €'; //FIXME add commas to make the number smaller
+        cardPrice.innerHTML = cameras[i].price + ' €'; //FIXME add commas to convert the number from cents to €
         cardBody.appendChild(cardPrice);
 
         let cardBtn = document.createElement("a");

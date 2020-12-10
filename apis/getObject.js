@@ -1,3 +1,5 @@
+//IMPORTANT comment the code to explain what it does
+
 // console.log(localStorage);
 const selectedCardId = localStorage.getItem('clickedBtnId');
 
@@ -10,7 +12,7 @@ let cameras;
 
   xhr.onload = function (){
     // console.log(this.status);
-    //FIXME ne pas oublier les promises au lieu des callbacks
+    //FIXME promises instead of callbacks
     if (this.status == 200) {
       var cameras = JSON.parse(this.responseText);
 
@@ -22,7 +24,7 @@ let cameras;
           
           cam_description.innerHTML = cameras.description;
 
-          cam_price.innerHTML = cameras.price + "€";//FIXME add commas to make the number smaller
+          cam_price.innerHTML = cameras.price + "€";//FIXME add commas to convert the number from cents to €
 
           let cartBtn = document.querySelector(".btn");
           let cameraId = cartBtn.id;
