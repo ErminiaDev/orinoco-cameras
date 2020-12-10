@@ -32,7 +32,22 @@
     <h2 class="m-5 text-center">Votre panier:</h2>
 
     <div class="container">
-      <div class="row my-5" id="row"></div>
+      <div class="row my-5" id="row">
+        <table class="table table-bordered">
+          <thead>
+            <th scope="col">Appareil photo sélectionné</th>
+            <th scope="col">Lentille choisie</th>
+            <th scope="col">Prix</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="selectedCam"></td>
+              <td id="camLense"></td>
+              <td id="camPrice"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <script src="apis/cart.js"></script>
