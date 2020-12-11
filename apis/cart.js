@@ -36,3 +36,7 @@ let cameras;
   };
 
   xhr.send();
+
+  validationBtn;addEventListener('click', function(){
+    
+  })

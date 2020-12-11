@@ -50,7 +50,7 @@ let cameras;
         cardBody.appendChild(cardPrice);
 
         let cardBtn = document.createElement("a");
-        cardBtn.classList.add("btn", "btn" + (Number([i])+1), "btn-dark", "my-3");
+        cardBtn.classList.add("btn", "btn" + (Number([i])+1), "btn-success", "my-3");
         cardBtn.id =  cameras[i]._id;
         cardBtn.href = 'product.html';
         cardBtn.innerHTML = "Voir les détails";

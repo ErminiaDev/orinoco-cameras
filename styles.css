@@ -24,3 +24,22 @@
 #cam_title {
     font-size: 1.4rem;
 }
+
+.separation {
+    height: 40px;
+    width: 720px;
+    border-top: solid 2px gray;
+}
+
+#footer {
+    height: 200px;
+}
+
+#footer a {
+    color: white;
+}
+
+#footer a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
