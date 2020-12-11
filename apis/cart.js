@@ -36,7 +36,8 @@ let cameras;
   };
 
   xhr.send();
-
-  validationBtn;addEventListener('click', function(){
-    
+  //FIXME do this event listener and visibility of form hidden
+  validationBtn.addEventListener('click', function(){
+    form.style.display = "block";
+    form.style.visibility = "visible";
   })

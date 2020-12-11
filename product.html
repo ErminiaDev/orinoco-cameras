@@ -13,74 +13,78 @@
     />
   </head>
   <body>
-    <!-- IMPORTANT comment the code -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <a class="navbar-brand" href="index.html">Orinoco</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
-          <a class="nav-link active" href="#">Produits</a>
-          <a class="nav-link" href="#">Panier</a>
-          <a class="nav-link" href="#">Commande</a>
-        </div>
-      </div>
-    </nav>
+    <div id="content-wrap">
+      <!-- IMPORTANT comment the code -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <a class="navbar-brand" href="index.html">Orinoco</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+              <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
+              <a class="nav-link active" href="#">Produits</a>
+              <a class="nav-link" href="#">Panier</a>
+              <a class="nav-link" href="#">Commande</a>
+            </div>
+          </div>
+        </nav>
 
 
-  <h2 class="m-5 text-center ">Détail du modèle</h2>
+      <h2 class="m-5 text-center ">Détail du modèle</h2>
     
-  <div class="container">
-    <div class="row my-5 py-5" id="row">
-      <div class="col-4 ml-5">
-        <div class="card bg-light mb-3">
-          <div class="card-header">
-            <h2 id="cam_title"></h2>
-          </div>
-          <div id="cam_photo"></div>
-        </div>
-      </div>
-      <div class="col-6 ">
-        <div class="row pt-4">
-          <div class="col-8 ml-auto pr-5">
-            <p id="cam_description" class="text-right"></p>
-            <p id="cam_price" class="lead text-right ml-5"></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5 ml-auto pr-5 text-right">
-            <form action="">
-              <div class="form-group">
-                <label for=""></label>
-                <select selectedIndex class="form-control" name="" id="select_lense">
-                </select>
+      <div class="container">
+        <div class="row my-5 py-5" id="row">
+          <div class="col-4 ml-5">
+            <div class="card bg-light mb-3">
+              <div class="card-header">
+                <h2 id="cam_title"></h2>
               </div>
-              <a class="btn btn-success mt-3" href="cart.html">Ajouter au panier</a>
-            </form>
+              <div id="cam_photo"></div>
+            </div>
+          </div>
+          <div class="col-6 ">
+            <div class="row pt-4">
+              <div class="col-8 ml-auto pr-5">
+                <p id="cam_description" class="text-right"></p>
+                <p id="cam_price" class="lead text-right ml-5"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 ml-auto pr-5 text-right">
+                <form action="">
+                  <div class="form-group">
+                    <label for=""></label>
+                    <select selectedIndex class="form-control" name="" id="select_lense">
+                    </select>
+                  </div>
+                  <a class="btn btn-success mt-3" href="cart.html">Ajouter au panier</a>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+        
 
-    <div id="footer" class="bg-secondary">
-      <div class="row pt-5">
-        <div class="col-6 text-right pr-5">
-          <address class="text-white">
-            <p class="my-1">Orinoco</p>
-            <p class="my-1">123 rue du Commerce</p>
-            <p class="my-1">75000 Paris</p>
-            <p class="my-1">01.23.45.67.89</p>
-          </address>
+        <div id="footer" class="bg-secondary">
+          <div class="row pt-5">
+            <div class="col-6 text-right pr-5">
+              <address class="text-white">
+                <p class="my-1">Orinoco</p>
+                <p class="my-1">123 rue du Commerce</p>
+                <p class="my-1">75000 Paris</p>
+                <p class="my-1">01.23.45.67.89</p>
+              </address>
+            </div>
+            <div class="col-6 pl-5">
+              <a href="#" class="d-block mt-4">Contact</a>
+              <a href="#" class="d-block">Mentions Légales</a>
+            </div>
+          </div>
         </div>
-        <div class="col-6 pl-5">
-          <a href="#" class="d-block mt-4">Contact</a>
-          <a href="#" class="d-block">Mentions Légales</a>
-        </div>
-      </div>
-    </div>
+    
     
 
     <script src="apis/getObject.js"></script>
