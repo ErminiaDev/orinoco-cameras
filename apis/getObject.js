@@ -36,7 +36,7 @@ let cameras;
 
           let lenseSelectList = document.getElementById("select_lense");
 
-          for(i=0; i < allLenses.length; i++){
+          for(i=0; i < allLenses.length; i++){ //FIXME ajouter plusieurs produits
             let lenseOption = document.createElement("option");
             lenseSelectList.appendChild(lenseOption);
             lenseOption.innerHTML += allLenses[i];
@@ -44,14 +44,17 @@ let cameras;
             // console.log(lense_selectList);
           }
 
-           let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
-           console.log(selectedLense.value );
-           console.log(selectedLense.text );
+          lenseSelectList.addEventListener('click', function(){
+            let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
+            /* console.log(selectedLense);
+            console.log(selectedLense.value );
+            console.log(selectedLense.text ); */
+            localStorage.setItem('selectedLense', selectedLense.value);
+          })
+    
 
            cartBtn.addEventListener('click', function(){
-            console.log(selectedLense);
             localStorage.setItem('cameraId', cameraId);
-            localStorage.setItem('selectedLense', selectedLense.value);
            });
 
 

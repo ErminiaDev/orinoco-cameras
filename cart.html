@@ -61,7 +61,7 @@
           </div>
 
           <div class="row">
-            <button id="validationBtn" class="btn btn-success mt-3 mx-auto">
+            <button id="validationBtn" class="btn btn-success mt-3 mb-5 mx-auto">
               Valider le panier
             </button>
           </div>
@@ -74,19 +74,25 @@
                   <h2 class="mt-5 mb-4">Vos informations de livraison</h2>
                   <!-- FIXME placeholders!! -->
                   <!-- FIXME visibility hidden for the form -->
-                  <form action="">
+                  <form novalidate class="needs-validation" action="">
                     <p class="lead">Coordonnées</p>
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group">
                           <label for="clientName">Nom</label>
-                          <input type="text" class="form-control" id="clientName" />
+                          <input type="text" class="form-control" id="clientName" required minlength="2"/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un nom
+                          </div>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group">
                           <label for="clientName">Prénom</label>
-                          <input type="text" class="form-control" id="clientName" />
+                          <input type="text" class="form-control" id="clientName" required minlength="2"/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un prénom
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -94,13 +100,19 @@
                       <div class="col-6">
                         <div class="form-group">
                           <label for="clientEmail">E-mail</label>
-                          <input type="email" class="form-control" id="clientEmail" />
+                          <input type="email" class="form-control" id="clientEmail" required/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un e-mail valide
+                          </div>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group">
                           <label for="clientNumber">Numéro de téléphone</label>
-                          <input type="number" class="form-control" id="clientNumber" />
+                          <input type="tel" class="form-control" id="clientNumber" required minlength="10" maxlength="10"/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un numéro de téléphone valide
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -108,7 +120,10 @@
                     <p class="lead">Adresse</p>
                     <div class="form-group">
                       <label for="clientRoad">Rue</label>
-                      <input type="text" class="form-control" id="clientRoad" />
+                      <input type="text" class="form-control" id="clientRoad" required/>
+                      <div class="invalid-feedback">
+                        Veuillez renseigner un nom de rue
+                      </div>
                     </div>
                     <div class="row">
                       <div class="col-6">
@@ -117,14 +132,21 @@
                           <input
                             type="number"
                             class="form-control"
-                            id="clientRoadNumber"
+                            id="clientRoadNumber" required
+                            minlength="1"
                           />
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un numéro de rue
+                          </div>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group">
                           <label for="clientPC">Code Postal</label>
-                          <input type="number" class="form-control" id="clientPC" />
+                          <input type="number" class="form-control" id="clientPC" required minlength="5" maxlength="5"/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner un code postal
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -146,7 +168,7 @@
                         type="radio"
                         class="form-check-input"
                         id="delivOption2"
-                        name="delivOptions"
+                        name="delivOptions" required
                       />
                       <label for="delivOption2" class="form-check-label"
                         >Colissimo 48h</label
@@ -156,7 +178,7 @@
                       <input
                         type="submit"
                         class="btn btn-success"
-                        value="Valider la commande"
+                        value="Valider la commande" required
                       />
                     </div>
                   </form>

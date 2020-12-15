@@ -68,3 +68,13 @@ html, body {
     visibility: hidden;
     display: none;
 }
+
+/* FIXME add :valid and :invalid styling to the form */
+
+/* .form-group input:valid {
+    border-color: green;
+}
+
+.form-group input:invalid {
+    border-color: red;
+} */
