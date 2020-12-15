@@ -54,7 +54,7 @@ let cameras;
     
 
            cartBtn.addEventListener('click', function(){
-            localStorage.setItem('cameraId', cameraId);
+            localStorage.setItem('cameraId', cameraId); //FIXME find a way to block validation if the client has not selected any option
            });
 
 
