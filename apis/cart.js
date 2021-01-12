@@ -1,11 +1,11 @@
 //IMPORTANT comment the code to explain what it does
 
+//TODO test that we are getting a cameraID and a selectedLense
 let cameraId = localStorage.getItem('cameraId');
 let selectedLense = localStorage.getItem('selectedLense')
 
-console.log(cameraId, selectedLense);
-//FIXME not getting the right lense option, always the first one comes up (value=0).
-
+//TODO test that local storage is cleared
+localStorage.clear();
 
 camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
 
@@ -17,7 +17,7 @@ let cameras;
   xhr.onload = function (){
     // console.log(this.status);
     //FIXMEpromises instead of callbacks
-
+    //TODO test that status is OK
     if (this.status == 200) {
         
       var cameras = JSON.parse(this.responseText);
@@ -73,8 +73,9 @@ let cameras;
 /******************** CREATE FORM INFORMATION OBJECT ************************/
 
 let submitBtn = document.getElementById("submitBtn");
-console.log(submitBtn);
+//console.log(submitBtn);
 
+//TODO test that different parameters of the object are present and not null
 submitBtn.addEventListener('click', function(){
   let contactObj = {};
   let clientFirstNameValue = document.getElementById("clientFirstName").value;

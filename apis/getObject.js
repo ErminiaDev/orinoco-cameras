@@ -3,7 +3,13 @@
 // console.log(localStorage);
 const selectedCardId = localStorage.getItem('clickedBtnId');
 
+//TODO TEST that localstorage is clear
+localStorage.clear();
+
+
+//TODO TEST that an ID is recieved on this page
 camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
+
 
 let cameras;
 
@@ -13,6 +19,7 @@ let cameras;
   xhr.onload = function (){
     // console.log(this.status);
     //FIXME promises instead of callbacks
+    //TODO TEST the status
     if (this.status == 200) {
       var cameras = JSON.parse(this.responseText);
 
@@ -32,11 +39,11 @@ let cameras;
           console.log(cameraId);
 
           let allLenses = cameras.lenses;
-          // console.log(allLenses);
+          //TODO test that lenses array is not null and length superior to 1
 
           let lenseSelectList = document.getElementById("select_lense");
 
-          for(i=0; i < allLenses.length; i++){ //FIXME ajouter plusieurs produits
+          for(i=0; i < allLenses.length; i++){ 
             let lenseOption = document.createElement("option");
             lenseSelectList.appendChild(lenseOption);
             lenseOption.innerHTML += allLenses[i];
@@ -44,17 +51,23 @@ let cameras;
             // console.log(lense_selectList);
           }
 
+          //TODO test that the following function stores a lense value
           lenseSelectList.addEventListener('click', function(){
             let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
-            /* console.log(selectedLense);
-            console.log(selectedLense.value );
-            console.log(selectedLense.text ); */
             localStorage.setItem('selectedLense', selectedLense.value);
-          })
-    
+            console.log(localStorage);
+            if(selectedLense.text == 'Choisir la lentille'){
+              cartBtn.disabled = true;
+              alert('Merci de choisir une lentille');
+            } else {
+              cartBtn.disabled = false;
+            }
+          })        
+          
+          
 
-           cartBtn.addEventListener('click', function(){
-            localStorage.setItem('cameraId', cameraId); //FIXME find a way to block validation if the client has not selected any option
+           cartBtn.addEventListener('click', function(){           
+              localStorage.setItem('cameraId', cameraId); 
            });
 
 

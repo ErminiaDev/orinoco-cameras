@@ -9,10 +9,11 @@ let cameras;
 
   xhr.onload = function (){
     // console.log(this.status);
+    //TODO TEST STATUS
     if (this.status == 200) {
       var cameras = JSON.parse(this.responseText);
       for (var i in cameras) {
-
+        //TODO TEST ALL CAMERAS
         
 
         let rowDiv = document.getElementById("row");
@@ -59,7 +60,7 @@ let cameras;
       }
 
       let allBtns = document.querySelectorAll(".btn");
-
+      //TODO TEST BTN ARRAY
       console.log(allBtns);
 
       allBtns.forEach(function(button){
