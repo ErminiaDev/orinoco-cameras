@@ -91,11 +91,11 @@ submitBtn.addEventListener('click', function(){
   let clientAddressValue = document.getElementById("clientAddress").value;
   let clientCityValue = document.getElementById("clientCity").value;
   let contactObj = {
-    clientFirstName: clientFirstNameValue,
-    clientLastName: clientLastNameValue,
-    clientEmail: clientEmailValue,
-    clientAddress: clientAddressValue,
-    clientCity: clientCityValue
+    firstName: clientFirstNameValue,
+    lastName: clientLastNameValue,
+    address: clientAddressValue,
+    city: clientCityValue,
+    email: clientEmailValue
   };
 localStorage.setItem('contactObject', JSON.stringify(contactObj));
 })
