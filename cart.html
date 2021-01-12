@@ -74,13 +74,13 @@
                   <h2 class="mt-5 mb-4">Vos informations de livraison</h2>
                   <!-- FIXME placeholders!! -->
                   <!-- FIXME visibility hidden for the form -->
-                  <form novalidate class="needs-validation" action="">
+                  <form novalidate class="needs-validation" action="order.html">
                     <p class="lead">Coordonnées</p>
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group">
-                          <label for="clientName">Nom</label>
-                          <input type="text" class="form-control" id="clientName" required minlength="2"/>
+                          <label for="clientLastName">Nom</label>
+                          <input type="text" class="form-control" id="clientLastName" required minlength="2"/>
                           <div class="invalid-feedback">
                             Veuillez renseigner un nom
                           </div>
@@ -88,8 +88,8 @@
                       </div>
                       <div class="col-6">
                         <div class="form-group">
-                          <label for="clientName">Prénom</label>
-                          <input type="text" class="form-control" id="clientName" required minlength="2"/>
+                          <label for="clientFirstName">Prénom</label>
+                          <input type="text" class="form-control" id="clientFirstName" required minlength="2"/>
                           <div class="invalid-feedback">
                             Veuillez renseigner un prénom
                           </div>
@@ -176,6 +176,7 @@
                     </div>
                     <div class="form-group mt-4">
                       <input
+                        id="submitBtn"
                         type="submit"
                         class="btn btn-success"
                         value="Valider la commande" required

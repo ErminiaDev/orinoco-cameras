@@ -56,7 +56,7 @@ let cameras;
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
+  // Loop over them and prevent submission(see bootstrap doc)
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -69,3 +69,30 @@ let cameras;
       }, false)
     })
 })();
+
+/******************** CREATE FORM INFORMATION OBJECT ************************/
+
+let submitBtn = document.getElementById("submitBtn");
+console.log(submitBtn);
+
+submitBtn.addEventListener('click', function(){
+  let contactObj = {};
+  let clientFirstNameValue = document.getElementById("clientFirstName").value;
+  let clientLastNameValue = document.getElementById("clientLastName").value;
+  let clientEmailValue = document.getElementById("clientEmail").value;
+  let clientNumberValue= document.getElementById("clientNumber").value;
+  let clientRoadValue = document.getElementById("clientRoad").value;
+  let clientRoadNumberValue = document.getElementById("clientRoadNumber").value;
+  let clientPCValue = document.getElementById("clientPC").value;
+  contactObj.clientFirstName = clientFirstNameValue;
+  contactObj.clientLastName = clientLastNameValue;
+  contactObj.clientEmail = clientEmailValue;
+  contactObj.clientNumber = clientNumberValue;
+  contactObj.clientRoad = clientRoadValue;
+  contactObj.clientRoadNumber = clientRoadNumberValue;
+  contactObj.clientPC = clientPCValue;
+  localStorage.setItem('contactObject', JSON.stringify(contactObj));
+  localStorage.setItem('cameraId', cameraId);
+})
+
+
