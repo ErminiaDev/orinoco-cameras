@@ -43,13 +43,8 @@ let cameras;
     form.style.display = "block";
     form.style.visibility = "visible";
 
-    let cameraObj = {};
-    cameraObj.id = cameraId;
-    cameraObj.lense = selectedLense;
-    console.log(cameraObj);
-
     let cameraArr = [];
-    cameraArr.push(cameraObj);
+    cameraArr.push(cameraId);
     console.log(cameraArr);
 
     cameraArrStringified = JSON.stringify(cameraArr)
@@ -89,17 +84,19 @@ let submitBtn = document.getElementById("submitBtn");
 
 //TODO test that different parameters of the object are present and not null
 submitBtn.addEventListener('click', function(){
-  let contactObj = {};
+  
   let clientFirstNameValue = document.getElementById("clientFirstName").value;
   let clientLastNameValue = document.getElementById("clientLastName").value;
   let clientEmailValue = document.getElementById("clientEmail").value;
   let clientAddressValue = document.getElementById("clientAddress").value;
   let clientCityValue = document.getElementById("clientCity").value;
-  contactObj.clientFirstName = clientFirstNameValue;
-  contactObj.clientLastName = clientLastNameValue;
-  contactObj.clientEmail = clientEmailValue;
-  contactObj.clientAddress = clientAddressValue;
-  contactObj.clientCity = clientCityValue;
+  let contactObj = {
+    clientFirstName: clientFirstNameValue,
+    clientLastName: clientLastNameValue,
+    clientEmail: clientEmailValue,
+    clientAddress: clientAddressValue,
+    clientCity: clientCityValue
+  };
 localStorage.setItem('contactObject', JSON.stringify(contactObj));
 })
 
