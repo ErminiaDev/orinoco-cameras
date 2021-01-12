@@ -1,10 +1,10 @@
 //IMPORTANT comment the code to explain what it does
 
+//FIXME cameraID is already in local storage, called clickedBtnId in previous js file
 //TODO test that we are getting a cameraID and a selectedLense
 let cameraId = localStorage.getItem('cameraId');
-let selectedLense = localStorage.getItem('selectedLense')
+let selectedLense = localStorage.getItem('selectedLense');
 
-//TODO test that local storage is cleared
 localStorage.clear();
 
 camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
@@ -37,12 +37,24 @@ let cameras;
 
   xhr.send();
 
-
- /************ DISPLAYING FORM ON VALIDATION ****************/
+ /************ DISPLAYING FORM ON VALIDATION AND STORING CAMERA ARRAY IN LOCAL STORAGE ****************/
 
   validationBtn.addEventListener('click', function(){
     form.style.display = "block";
     form.style.visibility = "visible";
+
+    let cameraObj = {};
+    cameraObj.id = cameraId;
+    cameraObj.lense = selectedLense;
+    console.log(cameraObj);
+
+    let cameraArr = [];
+    cameraArr.push(cameraObj);
+    console.log(cameraArr);
+
+    cameraArrStringified = JSON.stringify(cameraArr)
+    console.log(cameraArrStringified);
+    localStorage.setItem('cameraArray', cameraArrStringified);
   });
 
 
@@ -81,19 +93,14 @@ submitBtn.addEventListener('click', function(){
   let clientFirstNameValue = document.getElementById("clientFirstName").value;
   let clientLastNameValue = document.getElementById("clientLastName").value;
   let clientEmailValue = document.getElementById("clientEmail").value;
-  let clientNumberValue= document.getElementById("clientNumber").value;
-  let clientRoadValue = document.getElementById("clientRoad").value;
-  let clientRoadNumberValue = document.getElementById("clientRoadNumber").value;
-  let clientPCValue = document.getElementById("clientPC").value;
+  let clientAddressValue = document.getElementById("clientAddress").value;
+  let clientCityValue = document.getElementById("clientCity").value;
   contactObj.clientFirstName = clientFirstNameValue;
   contactObj.clientLastName = clientLastNameValue;
   contactObj.clientEmail = clientEmailValue;
-  contactObj.clientNumber = clientNumberValue;
-  contactObj.clientRoad = clientRoadValue;
-  contactObj.clientRoadNumber = clientRoadNumberValue;
-  contactObj.clientPC = clientPCValue;
-  localStorage.setItem('contactObject', JSON.stringify(contactObj));
-  localStorage.setItem('cameraId', cameraId);
+  contactObj.clientAddress = clientAddressValue;
+  contactObj.clientCity = clientCityValue;
+localStorage.setItem('contactObject', JSON.stringify(contactObj));
 })
 
 

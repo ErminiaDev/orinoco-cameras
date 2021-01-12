@@ -97,7 +97,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-6">
+                      <div class="col-12">
                         <div class="form-group">
                           <label for="clientEmail">E-mail</label>
                           <input type="email" class="form-control" id="clientEmail" required/>
@@ -106,73 +106,37 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-6">
-                        <div class="form-group">
-                          <label for="clientNumber">Numéro de téléphone</label>
-                          <input type="tel" class="form-control" id="clientNumber" required minlength="10" maxlength="10"/>
-                          <div class="invalid-feedback">
-                            Veuillez renseigner un numéro de téléphone valide
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                     <p class="lead">Adresse</p>
-                    <div class="form-group">
-                      <label for="clientRoad">Rue</label>
-                      <input type="text" class="form-control" id="clientRoad" required/>
-                      <div class="invalid-feedback">
-                        Veuillez renseigner un nom de rue
+                    <div class="row">
+                      <div class="col-12">
+                        <!-- FIXME use regex to verify -->
+                        <div class="form-group">
+                          <label for="clientAddress">Adresse</label>
+                          <input type="text" class="form-control" id="clientAddress" required/>
+                          <div class="invalid-feedback">
+                            Veuillez renseigner une adresse
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-6">
+                      <div class="col-12">
+                        <!-- FIXME use regex to verify -->
                         <div class="form-group">
-                          <label for="clientRoadNumber">N° de rue </label>
+                          <label for="clientCity">Code Postal et Ville</label>
                           <input
-                            type="number"
+                            type="text"
                             class="form-control"
-                            id="clientRoadNumber" required
+                            id="clientCity" required
                             minlength="1"
                           />
                           <div class="invalid-feedback">
-                            Veuillez renseigner un numéro de rue
+                            Veuillez renseigner un code postal suivi d'une ville
                           </div>
                         </div>
                       </div>
-                      <div class="col-6">
-                        <div class="form-group">
-                          <label for="clientPC">Code Postal</label>
-                          <input type="number" class="form-control" id="clientPC" required minlength="5" maxlength="5"/>
-                          <div class="invalid-feedback">
-                            Veuillez renseigner un code postal
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p class="lead">Choix de livraison</p>
-                    <div class="form-check">
-                      <input
-                        type="radio"
-                        class="form-check-input"
-                        id="delivOption1"
-                        name="delivOptions"
-                      />
-                      <label for="delivOption1" class="form-check-label"
-                        >Chronopost 24h</label
-                      >
-                    </div>
-                    <div class="form-check">
-                      <input
-                        type="radio"
-                        class="form-check-input"
-                        id="delivOption2"
-                        name="delivOptions" required
-                      />
-                      <label for="delivOption2" class="form-check-label"
-                        >Colissimo 48h</label
-                      >
                     </div>
                     <div class="form-group mt-4">
                       <input

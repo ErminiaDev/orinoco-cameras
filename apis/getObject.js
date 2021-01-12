@@ -3,8 +3,10 @@
 // console.log(localStorage);
 const selectedCardId = localStorage.getItem('clickedBtnId');
 
+//FIXME clickedBtnId is still stored when in cart.js, is there need to localStorage a cameraID again?
+
 //TODO TEST that localstorage is clear
-localStorage.clear();
+/* localStorage.clear(); */
 
 
 //TODO TEST that an ID is recieved on this page
@@ -56,7 +58,7 @@ let cameras;
             let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
             localStorage.setItem('selectedLense', selectedLense.value);
             console.log(localStorage);
-            if(selectedLense.text == 'Choisir la lentille'){
+            if(selectedLense.value == ""){
               cartBtn.disabled = true;
               alert('Merci de choisir une lentille');
             } else {

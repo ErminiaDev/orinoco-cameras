@@ -1,29 +1,28 @@
-let contactObj = JSON.parse(localStorage.getItem('contactObject'));
-console.log(contactObj);
-let cameraId = localStorage.getItem('cameraId');
-console.log(cameraId);
-
-orderNum = Math.floor(100000 + Math.random() * 900000);
-console.log(orderNum);
+let contactObjStr = localStorage.getItem('contactObject');
+console.log(contactObjStr);
+let cameraArrStr = localStorage.getItem('cameraArray');
+console.log(cameraArrStr);
 
 camerasUrl = `http://localhost:3000/api/cameras/order`;
 
-const contactString = JSON.stringify(contactObj);
+/* const contactString = JSON.stringify(contactObj);
+const cameraString = JSON.stringify(cameraArr); */
 
 var xhr = new XMLHttpRequest();
+xhr.open("POST", camerasUrl, true);
 
-
-xhr.onload = function () {
+/* xhr.onload = function () {
   // console.log(this.status);
   if (this.status == 200) {
     var order = JSON.parse(this.responseText);
     console.log(order);
   }
-};
+}; */
 
-xhr.open("POST", camerasUrl, true);
 xhr.setRequestHeader("Content-type", "application/json");
-xhr.send(contactString, cameraId);
+xhr.send(contactObjStr, cameraArrStr);
+
+console.log(xhr.readyState)
 
 //FIXME look at camera.js
 
