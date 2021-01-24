@@ -1,12 +1,12 @@
 //IMPORTANT comment the code to explain what it does
 
-// console.log(localStorage);
-const selectedCardId = localStorage.getItem('clickedBtnId');
+console.log(localStorage);
+const selectedCamId = localStorage.getItem('cameraId');
 
 //FIXME clickedBtnId is still stored when in cart.js, is there need to localStorage a cameraID again?
 
 //TODO TEST that an ID is recieved on this page
-camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
+camerasUrl = `http://localhost:3000/api/cameras/${selectedCamId}`;
 
 
 
@@ -64,11 +64,11 @@ camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
       })   
     };
 
-    function StoreAddedCam(){
+    /* function StoreAddedCam(){
       cartBtn.addEventListener('click', function(){           
           localStorage.setItem('cameraId', cameraId); 
        });
-    };
+    }; */
 
     function returnError(){
       alert('Une erreur s\'est produite dans le chargement des données');
@@ -86,7 +86,7 @@ camerasUrl = `http://localhost:3000/api/cameras/${selectedCardId}`;
       .then(populateHTML, returnError)
       .then(createOptions, returnError)
       .then(StoreSelOption, returnError)
-      .then(StoreAddedCam, returnError);
+      //.then(StoreAddedCam, returnError);
   };
 
   xhr.send();

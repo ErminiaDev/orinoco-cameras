@@ -65,8 +65,8 @@ let cameras;
 
       allBtns.forEach(function(button){
         button.addEventListener('click', function(){
-          let clickedBtnId = button.id;
-          localStorage.setItem('clickedBtnId', clickedBtnId);
+          let cameraId = button.id;
+          localStorage.setItem('cameraId', cameraId);
         })
       })
 
