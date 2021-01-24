@@ -22,6 +22,8 @@ xhr.onload = function () {
     var order = JSON.parse(this.responseText);
     console.log(order);
     console.log(this.status);
+    let successMsg = document.querySelector(".success-message");
+    successMsg.textContent = "Merci pour votre commande  " + order.contact.firstName; + order.contact.lastName; +", "
   } else {
     console.log(this.status);
   }
