@@ -44,26 +44,38 @@
 
         <div class="container">
           <div class="row mt-5" id="row">
-            <table class="table table-bordered">
+            <table id="table" class="table table-bordered">
               <thead>
-                <th scope="col">Appareil photo sélectionné</th>
-                <th scope="col">Lentille choisie</th>
-                <th scope="col">Prix</th>
+                <th class="text-center" scope="col">Appareil photo sélectionné</th>
+                <th class="text-center" scope="col">Lentille choisie</th>
+                <th class="text-center" scope="col">Prix</th>
               </thead>
-              <tbody>
-                <tr>
+              <tbody id="cartBody">
+                <!-- <tr>
                   <td id="selectedCam"></td>
                   <td id="camLense"></td>
                   <td id="camPrice"></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
 
           <div class="row">
-            <button id="validationBtn" class="btn btn-success mt-3 mb-5 mx-auto">
+            <div class="col-6">
+              <button id="validationBtn" class="btn btn-success mt-3 mb-5 mr-0">
               Valider le panier
-            </button>
+              </button>
+            </div>
+            <div class="col-6">
+              <button id="clearBtn" class="btn btn-danger mt-3 mb-5">
+              Vider le panier
+              </button>
+            </div>
+            <div id="returnCol" class="col-4">
+              <a href = "index.html" id="returnBtn" class="btn btn-success mt-3 mb-5">
+              Retourner à la page d'accueil
+              </a>
+            </div>
           </div>
 
           <div id="form">

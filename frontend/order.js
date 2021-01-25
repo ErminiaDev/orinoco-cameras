@@ -1,13 +1,14 @@
 let contactObjStr = localStorage.getItem('contactObject');
 console.log(contactObjStr);
-let cameraArrStr = localStorage.getItem('cameraArray');
-console.log(cameraArrStr);
+let camArrStr = localStorage.getItem('camArray');
+console.log(camArrStr);
 let contactObj = JSON.parse(contactObjStr);
-let cameraArr = JSON.parse(cameraArrStr);
+let camArray = JSON.parse(camArrStr);
+let total = localStorage.getItem('total');
 
 let finalObj = {};
 finalObj.contact = contactObj;
-finalObj.products = cameraArr;
+finalObj.products = camArray;
 console.log(finalObj);
 
 camerasUrl = `http://localhost:3000/api/cameras/order`;
@@ -23,7 +24,7 @@ xhr.onload = function () {
     console.log(order);
     console.log(this.status);
     let successMsg = document.querySelector(".success-message");
-    successMsg.textContent = "Merci pour votre commande  " + order.contact.firstName; + order.contact.lastName; +", "
+    successMsg.textContent = "Merci pour votre achat  " + order.contact.firstName + " " + order.contact.lastName + ". Votre numéro de commande est le suivant: " + order.orderId + "."
   } else {
     console.log(this.status);
   }

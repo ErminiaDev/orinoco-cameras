@@ -1,12 +1,12 @@
 //IMPORTANT comment the code to explain what it does
 
 console.log(localStorage);
-const selectedCamId = localStorage.getItem('cameraId');
+const cameraId = localStorage.getItem('cameraId');
 
 //FIXME clickedBtnId is still stored when in cart.js, is there need to localStorage a cameraID again?
 
 //TODO TEST that an ID is recieved on this page
-camerasUrl = `http://localhost:3000/api/cameras/${selectedCamId}`;
+camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
 
 
 
@@ -52,9 +52,11 @@ camerasUrl = `http://localhost:3000/api/cameras/${selectedCamId}`;
     function StoreSelOption(){
       //TODO test that the following function stores a lense value
       lenseSelectList.addEventListener('click', function(){
-        let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex];
-        localStorage.setItem('selectedLense', selectedLense.value);
-        console.log(localStorage);
+        let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex]
+        let lenseArray = [];
+        lenseArray = JSON.parse(localStorage.getItem('lenseArray')) || [];
+        lenseArray.push(selectedLense.value);
+        localStorage.setItem('lenseArray', JSON.stringify(lenseArray));
         if(selectedLense.value == ""){
           cartBtn.disabled = true;
           alert('Merci de choisir une lentille');
@@ -64,12 +66,24 @@ camerasUrl = `http://localhost:3000/api/cameras/${selectedCamId}`;
       })   
     };
 
+    function addToCart(){
+      cartBtn.addEventListener('click', function(){      
+          //FIXME stores only current camera in array       
+          let camArray = [];
+          camArray = JSON.parse(localStorage.getItem('camArray')) || [];
+          camArray.push(cameraId);
+          localStorage.setItem('camArray', JSON.stringify(camArray)) ;
+          modalWindow.style.display = "block";
+          modalWindow.style.visibility = "visible";
+       });
+    }
+
     /* function StoreAddedCam(){
       cartBtn.addEventListener('click', function(){           
           localStorage.setItem('cameraId', cameraId); 
        });
     }; */
-
+ 
     function returnError(){
       alert('Une erreur s\'est produite dans le chargement des données');
     };
@@ -86,6 +100,7 @@ camerasUrl = `http://localhost:3000/api/cameras/${selectedCamId}`;
       .then(populateHTML, returnError)
       .then(createOptions, returnError)
       .then(StoreSelOption, returnError)
+      .then(addToCart, returnError)
       //.then(StoreAddedCam, returnError);
   };
 

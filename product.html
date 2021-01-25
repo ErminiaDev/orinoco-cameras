@@ -35,7 +35,7 @@
     
       <div class="container">
         <div class="row my-5 py-5" id="row">
-          <div class="col-4 ml-5">
+          <div class="col-lg-4 col-6 pl-lg-5 pl-2">
             <div class="card bg-light mb-3">
               <div class="card-header">
                 <h2 id="cam_title"></h2>
@@ -43,32 +43,56 @@
               <div id="cam_photo"></div>
             </div>
           </div>
-          <div class="col-6 ">
+          <div class="col-6">
             <div class="row pt-4">
-              <div class="col-8 ml-auto pr-5">
+              <div class="col-lg-8 col-12 ml-auto pr-lg-5 pr-2">
                 <p id="cam_description" class="text-right"></p>
                 <p id="cam_price" class="lead text-right ml-5"></p>
               </div>
             </div>
             <div class="row">
-              <div class="col-5 ml-auto pr-5 text-right">
-                <form action="cart.html">
+              <div class="col-lg-5 col-10 ml-auto pr-lg-5 pr-2 text-right">
+                <form>
                   <div class="form-group">
                     <label for=""></label>
                     <select selectedIndex class="form-control" name="" id="select_lense">
                         <option value="">Choisir la lentille</option>
                     </select>
                   </div>
-                  <button type="submit" class="btn btn-success mt-3" disabled>Ajouter au panier</button>
+                  <button type="button" class="btn btn-success mt-3" disabled>Ajouter au panier</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-        
 
+
+    </div>
+
+<!---------------------------------------------- MODAL -------------------------------------->
+
+        <div id="modalWindow" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Appareil photo ajouté au panier!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Que souhaitez vous faire?</p>
+              </div>
+              <div class="modal-footer">
+                <a href="cart.html" class="btn btn-primary">Voir le panier</a>
+                <a href="index.html" class="btn btn-success">Continuer mes achats</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+  <!---------------------------------------------- FOOTER -------------------------------------->
         <div id="footer" class="bg-secondary">
           <div class="row pt-5">
             <div class="col-6 text-right pr-5">

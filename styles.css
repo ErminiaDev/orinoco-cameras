@@ -24,7 +24,7 @@ html, body {
 }
 
 #cam_photo {
-    width: 350px;
+    width: 100%;
     height: 250px;
     background-repeat: no-repeat;
     background-position: center;
@@ -64,9 +64,32 @@ html, body {
     font-weight: bold;
 }
 
-#form {
+#form, #modal-window, #returnBtn {
     visibility: hidden;
     display: none;
+}
+
+#returnCol {
+    margin: 10px auto;
+}
+
+#clearBtn {
+    visibility: visible;
+    display: block;
+}
+
+#validationBtn {
+    margin-left: auto;
+    visibility: visible;
+    display: block;
+}
+
+th {
+    width: 33%;
+}
+
+#orderConf {
+    font-size: 2em;
 }
 
 /* FIXME add :valid and :invalid styling to the form */
