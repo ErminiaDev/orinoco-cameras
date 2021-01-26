@@ -1,7 +1,7 @@
-//IMPORTANT comment the code to explain what it does
-
-//FIXME cameraID is already in local storage, called clickedBtnId in previous js file
 //TODO test that we are getting a cameraID and a selectedLense
+
+/* *************GETTING AND PARSING LOCAL STORAGE INFO***************** */
+
 let cameraId = localStorage.getItem('cameraId');
 let selectedLense = localStorage.getItem('selectedLense');
 let camArray = JSON.parse(localStorage.getItem('camArray'));
@@ -11,6 +11,15 @@ console.log(camArray);
 // console.log(lenseArray);
 
 //localStorage.clear();
+/* let camera = {};
+camera= {
+  id:,
+  option:,
+  quantité:,
+  prix:
+} */
+
+/* ********************************DISPLAYING CART************************** */
 
 function displayCart(){
   let totalCart = 0;
@@ -64,7 +73,7 @@ function displayCart(){
 
 }
 
-
+/************************DISPLAYING TOTAL****************************/
 function displayTotal() {
   total = localStorage.getItem('total');
   let lastCartRow = document.createElement("tfoot");
@@ -78,9 +87,9 @@ function displayTotal() {
   tfootCol2.textContent = total + "€"
   lastCartRow.appendChild(tfootCol1);
   lastCartRow.appendChild(tfootCol2);
+  displayCart();
 }
 
-displayCart();
 displayTotal();
 
 

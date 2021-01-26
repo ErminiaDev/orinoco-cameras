@@ -1,3 +1,5 @@
+/* ****************GETTING AND PARSING LOCALSTORAGE INFO***************** */
+
 let contactObjStr = localStorage.getItem('contactObject');
 console.log(contactObjStr);
 let camArrStr = localStorage.getItem('camArray');
@@ -6,11 +8,15 @@ let contactObj = JSON.parse(contactObjStr);
 let camArray = JSON.parse(camArrStr);
 let total = localStorage.getItem('total');
 
+
+/* ***************CREATING FINAL OBJECT TO POST TO BACKEND**************** */
 let finalObj = {};
 finalObj.contact = contactObj;
 finalObj.products = camArray;
 console.log(finalObj);
 
+
+/* *****************POSTING FINAL OBJECT****************** */
 camerasUrl = `http://localhost:3000/api/cameras/order`;
 
 var xhr = new XMLHttpRequest();
