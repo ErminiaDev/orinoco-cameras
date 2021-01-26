@@ -77,12 +77,6 @@ camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
           modalWindow.style.visibility = "visible";
        });
     }
-
-    /* function StoreAddedCam(){
-      cartBtn.addEventListener('click', function(){           
-          localStorage.setItem('cameraId', cameraId); 
-       });
-    }; */
  
     function returnError(){
       alert('Une erreur s\'est produite dans le chargement des données');
@@ -101,7 +95,6 @@ camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
       .then(createOptions, returnError)
       .then(StoreSelOption, returnError)
       .then(addToCart, returnError)
-      //.then(StoreAddedCam, returnError);
   };
 
   xhr.send();
