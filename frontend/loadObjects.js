@@ -1,4 +1,5 @@
 //IMPORTANT comment the code to explain what it does
+//localStorage.clear();
 console.log(localStorage);
 
 /**************** displaying objects on first page by creating html elements ****************/

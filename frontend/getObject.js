@@ -7,14 +7,72 @@ console.log(localStorage);
 const cameraId = localStorage.getItem('cameraId');
 
 
-
-
 //TODO TEST that an ID is recieved on this page
 camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
 
 let cameras;
 
+function populateHTML(object)
+{
+  cam_title.innerHTML = object.name;
 
+  cam_photo.style.backgroundImage = "url(" +object.imageUrl + ")";
+          
+  cam_description.innerHTML = object.description;
+
+  let camPrice = object.price/100
+
+  cam_price.innerHTML = camPrice + "€";
+}
+
+function createOptions(optionArray, list)
+{
+
+  for(i=0; i < optionArray.length; i++){ 
+    let lenseOption = document.createElement("option");
+    list.appendChild(lenseOption);
+    lenseOption.innerHTML += optionArray[i];
+    lenseOption.setAttribute('value',`${[i]}`);
+    // console.log(lense_selectList);
+  }
+};
+
+function StoreSelOption(list, btn, selObject)
+{
+  //TODO test that the following function stores a lense value
+  list.addEventListener('click', function(){
+    let selectedLense = list.options[list.selectedIndex]
+    selObject.cam_option = selectedLense.text;
+    console.log(selObject);
+    /* let lenseArray = [];
+    lenseArray = JSON.parse(localStorage.getItem('lenseArray')) || [];
+    lenseArray.push(selectedLense.value);
+    localStorage.setItem('lenseArray', JSON.stringify(lenseArray)); */
+    if(selectedLense.value == ""){
+      btn.disabled = true;
+      alert('Merci de choisir une lentille');
+    } else {
+      btn.disabled = false;
+    }
+  })   
+};
+
+function addToCart(btn, selObject){
+  btn.addEventListener('click', function(){      
+      //FIXME stores only current camera in array       
+      let camArray =[];
+      camArray = JSON.parse(localStorage.getItem('camArray')) || [];
+      if(selObject.cam_id != undefined && selObject.cam_option != undefined){
+        camArray.push(selObject);
+        localStorage.setItem('camArray', JSON.stringify(camArray)) ;
+        console.log(camArray);
+      }else{
+        alert="Pas de caméra ajoutée au panier";
+      }
+      modalWindow.style.display = "block";
+      modalWindow.style.visibility = "visible";
+   });
+}
 
 function loadData()
 {
@@ -30,78 +88,30 @@ function loadData()
     {
       cameras = JSON.parse(this.responseText);
 
+      let camObject = {};
+
+      camObject = {
+        cam_id: cameraId,
+        cam_name: cameras.name,
+        cam_option: undefined,
+        cam_price: cameras.price
+      };
+
       let cartBtn = document.querySelector(".btn");
 
-      /* let cameraId = cameras._id;
-      console.log(cameraId);
-       */
       let allLenses = cameras.lenses;
 
       let lenseSelectList = document.getElementById("select_lense");
 
-      function populateHTML()
-      {
-        cam_title.innerHTML = cameras.name;
 
-        cam_photo.style.backgroundImage = "url(" +cameras.imageUrl + ")";
-          
-        cam_description.innerHTML = cameras.description;
-
-        let camPrice = cameras.price/100
-
-        cam_price.innerHTML = camPrice + "€";
-      }
-
-      function createOptions()
-      {
-
-        for(i=0; i < allLenses.length; i++){ 
-          let lenseOption = document.createElement("option");
-          lenseSelectList.appendChild(lenseOption);
-          lenseOption.innerHTML += allLenses[i];
-          lenseOption.setAttribute('value',`${[i]}`);
-          // console.log(lense_selectList);
-        }
-      };
-
-
-      function StoreSelOption()
-      {
-        //TODO test that the following function stores a lense value
-        lenseSelectList.addEventListener('click', function(){
-          let selectedLense = lenseSelectList.options[lenseSelectList.selectedIndex]
-          let lenseArray = [];
-          lenseArray = JSON.parse(localStorage.getItem('lenseArray')) || [];
-          lenseArray.push(selectedLense.value);
-          localStorage.setItem('lenseArray', JSON.stringify(lenseArray));
-          if(selectedLense.value == ""){
-            cartBtn.disabled = true;
-            alert('Merci de choisir une lentille');
-          } else {
-            cartBtn.disabled = false;
-          }
-        })   
-      };
-
-
-      function addToCart(){
-        cartBtn.addEventListener('click', function(){      
-            //FIXME stores only current camera in array       
-            let camArray = [];
-            camArray = JSON.parse(localStorage.getItem('camArray')) || [];
-            camArray.push(cameraId);
-            localStorage.setItem('camArray', JSON.stringify(camArray)) ;
-            modalWindow.style.display = "block";
-            modalWindow.style.visibility = "visible";
-         });
-      }
+      console.log(camObject);
 
       
       promise
-      .then(populateHTML, returnErrorHTML)
-      .then(createOptions, returnErrorOptions)
-      .then(StoreSelOption, returnErrorSelOpt)
-      .then(addToCart, returnErrorCart)
+      .then(populateHTML(cameras), returnErrorHTML)
+      .then(createOptions(allLenses, lenseSelectList), returnErrorOptions)
+      .then(StoreSelOption(lenseSelectList, cartBtn, camObject), returnErrorSelOpt)
+      .then(addToCart(cartBtn, camObject), returnErrorCart)
       ;    
     }
       

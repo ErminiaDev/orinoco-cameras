@@ -1,18 +1,23 @@
 /* ****************GETTING AND PARSING LOCALSTORAGE INFO***************** */
 
-let contactObjStr = localStorage.getItem('contactObject');
-console.log(contactObjStr);
-let camArrStr = localStorage.getItem('camArray');
-console.log(camArrStr);
-let contactObj = JSON.parse(contactObjStr);
-let camArray = JSON.parse(camArrStr);
-let total = localStorage.getItem('total');
+let contactObj = JSON.parse(localStorage.getItem('contactObject'));
+let camArray = JSON.parse(localStorage.getItem('camArray'));
+//let total = localStorage.getItem('total');
 
 
 /* ***************CREATING FINAL OBJECT TO POST TO BACKEND**************** */
 let finalObj = {};
 finalObj.contact = contactObj;
-finalObj.products = camArray;
+
+let camIdArray = function createCamIdArr(){
+  let array = [];
+  for(i=0; i<camArray.length; i++){
+    array.push(camArray[i].cam_id);
+  }
+  return array;
+}();
+
+finalObj.products = camIdArray;
 console.log(finalObj);
 
 
@@ -38,6 +43,8 @@ xhr.onload = function () {
 
 xhr.setRequestHeader("Content-type", "application/json");
 xhr.send(JSON.stringify(finalObj));
+
+localStorage.clear();
 
 
 

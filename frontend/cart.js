@@ -2,80 +2,46 @@
 
 /* *************GETTING AND PARSING LOCAL STORAGE INFO***************** */
 
-let cameraId = localStorage.getItem('cameraId');
-let selectedLense = localStorage.getItem('selectedLense');
-let camArray = JSON.parse(localStorage.getItem('camArray'));
-//let lenseArray = JSON.parse(localStorage.getItem('lenseArray'));
+let camArray = JSON.parse(localStorage.getItem('camArray')) ;
+console.log(camArray)
 
-console.log(camArray);
-// console.log(lenseArray);
-
-//localStorage.clear();
-/* let camera = {};
-camera= {
-  id:,
-  option:,
-  quantité:,
-  prix:
-} */
-
+let total = function calcTotal() {
+  let camPricesArr = [];
+  for(i=0; i<camArray.length; i++) {
+    camPricesArr.push(camArray[i].cam_price/100);
+  }
+  let totalAmount = camPricesArr.reduce((total, current) => total + current, 0);
+  return totalAmount;
+}();
 /* ********************************DISPLAYING CART************************** */
 
 function displayCart(){
-  let totalCart = 0;
 
   for (i = 0; i < camArray.length; i++){
+    let cartBody = document.getElementById("cartBody");
+    let cartRow = document.createElement("tr");
 
-    camerasUrl = `http://localhost:3000/api/cameras/${camArray[i]}`;
+    cartBody.appendChild(cartRow);
 
-    let lenseArray = JSON.parse(localStorage.getItem('lenseArray'));
-    let cameraLense = lenseArray[i];
-    //console.log(cameraLense);
+    let cartCol1 = document.createElement("td");
+    let cartCol2 = document.createElement("td");
+    let cartCol3 = document.createElement("td");
 
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", camerasUrl, true);
+    cartRow.appendChild(cartCol1);
+    cartRow.appendChild(cartCol2);
+    cartRow.appendChild(cartCol3);
 
-      xhr.onload = function (){
-        // console.log(this.status);
-        //FIXMEpromises instead of callbacks
-        //TODO test that status is OK
-        if (this.status == 200) {
-        
-          cameras = JSON.parse(this.responseText);
-         
-          let cartBody = document.getElementById("cartBody");
-          let cartRow = document.createElement("tr");
+    let camPrice = camArray[i].cam_price/100
 
-          cartBody.appendChild(cartRow);
-
-          let cartCol1 = document.createElement("td");
-          let cartCol2 = document.createElement("td");
-          let cartCol3 = document.createElement("td");
-
-          cartRow.appendChild(cartCol1);
-          cartRow.appendChild(cartCol2);
-          cartRow.appendChild(cartCol3);
-
-          let camPrice = cameras.price/100
-
-          cartCol1.textContent = cameras.name;
-          cartCol2.textContent = cameras.lenses[Number(cameraLense)];
-          cartCol3.textContent = camPrice + "€";
-
-          totalCart += camPrice;
-          console.log(totalCart);
-
-          localStorage.setItem('total', totalCart);
-        }
-      };
-      xhr.send();
+    cartCol1.textContent = camArray[i].cam_name;
+    cartCol2.textContent = camArray[i].cam_option;
+    cartCol3.textContent = camPrice + "€";
   }
 
 }
 
 /************************DISPLAYING TOTAL****************************/
 function displayTotal() {
-  total = localStorage.getItem('total');
   let lastCartRow = document.createElement("tfoot");
   lastCartRow.id = "tfooter";
   let table = document.getElementById("table");
@@ -150,21 +116,26 @@ let submitBtn = document.getElementById("submitBtn");
 //console.log(submitBtn);
 
 //TODO test that different parameters of the object are present and not null
-submitBtn.addEventListener('click', function(){
+function createClientObj() {
+  submitBtn.addEventListener('click', function(){
   
-  let clientFirstNameValue = document.getElementById("clientFirstName").value;
-  let clientLastNameValue = document.getElementById("clientLastName").value;
-  let clientEmailValue = document.getElementById("clientEmail").value;
-  let clientAddressValue = document.getElementById("clientAddress").value;
-  let clientCityValue = document.getElementById("clientCity").value;
-  let contactObj = {
-    firstName: clientFirstNameValue,
-    lastName: clientLastNameValue,
-    address: clientAddressValue,
-    city: clientCityValue,
-    email: clientEmailValue
-  };
-localStorage.setItem('contactObject', JSON.stringify(contactObj));
-})
+    let clientFirstNameValue = document.getElementById("clientFirstName").value;
+    let clientLastNameValue = document.getElementById("clientLastName").value;
+    let clientEmailValue = document.getElementById("clientEmail").value;
+    let clientAddressValue = document.getElementById("clientAddress").value;
+    let clientCityValue = document.getElementById("clientCity").value;
+    let contactObj = {
+      firstName: clientFirstNameValue,
+      lastName: clientLastNameValue,
+      address: clientAddressValue,
+      city: clientCityValue,
+      email: clientEmailValue
+    };
+  localStorage.setItem('contactObject', JSON.stringify(contactObj));
+  })
+}
+
+createClientObj();
+
 
 
