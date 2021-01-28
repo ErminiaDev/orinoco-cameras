@@ -1,14 +1,18 @@
 /* ****************GETTING AND PARSING LOCALSTORAGE INFO***************** */
 
+//contact object
 let contactObj = JSON.parse(localStorage.getItem('contactObject'));
+
+//array of camera objects
 let camArray = JSON.parse(localStorage.getItem('camArray'));
-//let total = localStorage.getItem('total');
 
 
 /* ***************CREATING FINAL OBJECT TO POST TO BACKEND**************** */
 let finalObj = {};
+//storing contact info object inside the final object
 finalObj.contact = contactObj;
 
+//creating an array of camera ids
 let camIdArray = function createCamIdArr(){
   let array = [];
   for(i=0; i<camArray.length; i++){
@@ -17,6 +21,7 @@ let camIdArray = function createCamIdArr(){
   return array;
 }();
 
+//storing camera id array inside the final object
 finalObj.products = camIdArray;
 console.log(finalObj);
 

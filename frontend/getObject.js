@@ -1,4 +1,3 @@
-//IMPORTANT comment the code to explain what it does
 
 console.log(localStorage);
 
@@ -12,6 +11,7 @@ camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
 
 let cameras;
 
+//displaying the selected camera's information
 function populateHTML(object)
 {
   cam_title.innerHTML = object.name;
@@ -25,6 +25,7 @@ function populateHTML(object)
   cam_price.innerHTML = camPrice + "€";
 }
 
+//displaying the selected camera's options
 function createOptions(optionArray, list)
 {
 
@@ -37,6 +38,7 @@ function createOptions(optionArray, list)
   }
 };
 
+//store selected option inside the camera object and enable add to cart button when option is selected
 function StoreSelOption(list, btn, selObject)
 {
   //TODO test that the following function stores a lense value
@@ -44,10 +46,6 @@ function StoreSelOption(list, btn, selObject)
     let selectedLense = list.options[list.selectedIndex]
     selObject.cam_option = selectedLense.text;
     console.log(selObject);
-    /* let lenseArray = [];
-    lenseArray = JSON.parse(localStorage.getItem('lenseArray')) || [];
-    lenseArray.push(selectedLense.value);
-    localStorage.setItem('lenseArray', JSON.stringify(lenseArray)); */
     if(selectedLense.value == ""){
       btn.disabled = true;
       alert('Merci de choisir une lentille');
@@ -57,6 +55,7 @@ function StoreSelOption(list, btn, selObject)
   })   
 };
 
+//storing the camera object in local storage as long as its id and options are not undefined, and open modal
 function addToCart(btn, selObject){
   btn.addEventListener('click', function(){      
       //FIXME stores only current camera in array       
@@ -74,6 +73,7 @@ function addToCart(btn, selObject){
    });
 }
 
+//calling API to get info based on the clicked camera's id
 function loadData()
 {
   var xhr = new XMLHttpRequest();

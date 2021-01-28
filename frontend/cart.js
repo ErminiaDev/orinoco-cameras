@@ -1,18 +1,11 @@
-//TODO test that we are getting a cameraID and a selectedLense
+//TODO tests
 
 /* *************GETTING AND PARSING LOCAL STORAGE INFO***************** */
 
 let camArray = JSON.parse(localStorage.getItem('camArray')) ;
 console.log(camArray)
 
-let total = function calcTotal() {
-  let camPricesArr = [];
-  for(i=0; i<camArray.length; i++) {
-    camPricesArr.push(camArray[i].cam_price/100);
-  }
-  let totalAmount = camPricesArr.reduce((total, current) => total + current, 0);
-  return totalAmount;
-}();
+
 /* ********************************DISPLAYING CART************************** */
 
 function displayCart(){
@@ -40,7 +33,17 @@ function displayCart(){
 
 }
 
-/************************DISPLAYING TOTAL****************************/
+/************************ CALCULATING AND DISPLAYING TOTAL****************************/
+
+let total = function calcTotal() {
+  let camPricesArr = [];
+  for(i=0; i<camArray.length; i++) {
+    camPricesArr.push(camArray[i].cam_price/100);
+  }
+  let totalAmount = camPricesArr.reduce((total, current) => total + current, 0);
+  return totalAmount;
+}();
+
 function displayTotal() {
   let lastCartRow = document.createElement("tfoot");
   lastCartRow.id = "tfooter";
@@ -59,7 +62,7 @@ function displayTotal() {
 displayTotal();
 
 
-/********************** CLEARING CART ***************************/ 
+/********************** CLEARING CART BUTTON (RED BUTTON)***************************/ 
 
   clearBtn.addEventListener('click', function(){
     cartBody.remove();
@@ -74,7 +77,7 @@ displayTotal();
   })
 
 
-/************ DISPLAYING FORM ON VALIDATION AND STORING CAMERA ARRAY IN LOCAL STORAGE ****************/
+/************ DISPLAYING FORM ON VALIDATION AND STORING CAMERA ARRAY IN LOCAL STORAGE (GREEN BUTTON) ****************/
 
   validationBtn.addEventListener('click', function(){
     form.style.display = "block";
