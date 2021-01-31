@@ -5,12 +5,28 @@
 let camArray = JSON.parse(localStorage.getItem('camArray')) ;
 console.log(camArray)
 
+/************************REMOVING DUPLICATES FROM CAMARRAY FOR CART DISPLAY*************************/
+let arrResult = {};
+
+for (i = 0; i < camArray.length; i++) {
+  let item = camArray[i];
+  arrResult[item.cam_id + " - " + item.cam_option] = item;
+  console.log(arrResult);
+};
+
+let j = 0;
+let nonDuplicatedArray = [];
+for (var item in arrResult) {
+  nonDuplicatedArray[j++] = arrResult[item];
+};
+console.log(nonDuplicatedArray);
+
 
 /* ********************************DISPLAYING CART************************** */
 
 function displayCart(){
 
-  for (i = 0; i < camArray.length; i++){
+  for (i = 0; i < nonDuplicatedArray.length; i++){
     let cartBody = document.getElementById("cartBody");
     let cartRow = document.createElement("tr");
 
@@ -19,16 +35,19 @@ function displayCart(){
     let cartCol1 = document.createElement("td");
     let cartCol2 = document.createElement("td");
     let cartCol3 = document.createElement("td");
+    let cartCol4 = document.createElement("td");
 
     cartRow.appendChild(cartCol1);
     cartRow.appendChild(cartCol2);
     cartRow.appendChild(cartCol3);
+    cartRow.appendChild(cartCol4);
 
-    let camPrice = camArray[i].cam_price/100
+    let camPrice = nonDuplicatedArray[i].cam_price/100
 
-    cartCol1.textContent = camArray[i].cam_name;
-    cartCol2.textContent = camArray[i].cam_option;
-    cartCol3.textContent = camPrice + "€";
+    cartCol1.textContent = nonDuplicatedArray[i].cam_name;
+    cartCol2.textContent = nonDuplicatedArray[i].cam_option;
+    cartCol3.textContent = nonDuplicatedArray[i].cam_amount;
+    cartCol4.textContent = camPrice + "€";
   }
 
 }
@@ -50,7 +69,7 @@ function displayTotal() {
   let table = document.getElementById("table");
   table.appendChild(lastCartRow);
   let tfootCol1 = document.createElement("td");
-  tfootCol1.setAttribute("colspan", 2);
+  tfootCol1.setAttribute("colspan", 3);
   tfootCol1.textContent = "Total";
   let tfootCol2 = document.createElement("td");
   tfootCol2.textContent = total + "€"
