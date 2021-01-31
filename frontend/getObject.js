@@ -51,7 +51,7 @@ function StoreSelOption(list, btn, selObject) {
 
 //storing the camera object in local storage as long as its id and options are not undefined, and open modal
 function addToCart(btn, selObject) {
-  btn.addEventListener("mouseover", function () {
+  btn.addEventListener("click", function () {
     //FIXME stores only current camera in array
     let camArray = [];
     camArray = JSON.parse(localStorage.getItem("camArray")) || [];
