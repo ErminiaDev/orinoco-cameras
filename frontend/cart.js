@@ -1,9 +1,6 @@
-//TODO tests
-
 /* *************GETTING AND PARSING LOCAL STORAGE INFO***************** */
 
 let camArray = JSON.parse(localStorage.getItem('camArray')) ;
-console.log(camArray)
 
 /************************REMOVING DUPLICATES FROM CAMARRAY FOR CART DISPLAY*************************/
 let arrResult = {};
@@ -11,7 +8,6 @@ let arrResult = {};
 for (i = 0; i < camArray.length; i++) {
   let item = camArray[i];
   arrResult[item.cam_id + " - " + item.cam_option] = item;
-  console.log(arrResult);
 };
 
 let j = 0;
@@ -19,7 +15,6 @@ let nonDuplicatedArray = [];
 for (var item in arrResult) {
   nonDuplicatedArray[j++] = arrResult[item];
 };
-console.log(nonDuplicatedArray);
 
 
 /* ********************************DISPLAYING CART************************** */
@@ -103,7 +98,6 @@ displayTotal();
     form.style.visibility = "visible";
 
     camArrStr = JSON.stringify(camArray)
-    console.log(camArrStr);
     localStorage.setItem('camArray', camArrStr);
   });
 
@@ -135,9 +129,7 @@ displayTotal();
 /******************** CREATE FORM INFORMATION OBJECT ************************/
 
 let submitBtn = document.getElementById("submitBtn");
-//console.log(submitBtn);
 
-//TODO test that different parameters of the object are present and not null
 function createClientObj() {
   submitBtn.addEventListener('click', function(){
   

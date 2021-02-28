@@ -23,7 +23,6 @@ let camIdArray = function createCamIdArr(){
 
 //storing camera id array inside the final object
 finalObj.products = camIdArray;
-console.log(finalObj);
 
 
 /* *****************POSTING FINAL OBJECT****************** */
@@ -37,12 +36,9 @@ xhr.onload = function () {
   
   if (this.status == 201) {
     var order = JSON.parse(this.responseText);
-    console.log(order);
-    console.log(this.status);
     let successMsg = document.querySelector(".success-message");
     successMsg.textContent = "Merci pour votre achat  " + order.contact.firstName + " " + order.contact.lastName + ". Votre numéro de commande est le suivant: " + order.orderId + "."
   } else {
-    console.log(this.status);
   }
 };
 

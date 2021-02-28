@@ -1,5 +1,3 @@
-console.log(localStorage);
-
 /******************get the camera's id from local storage*******************/
 
 const cameraId = localStorage.getItem("cameraId");
@@ -29,17 +27,14 @@ function createOptions(optionArray, list) {
     list.appendChild(lenseOption);
     lenseOption.innerHTML += optionArray[i];
     lenseOption.setAttribute("value", `${[i]}`);
-    // console.log(lense_selectList);
   }
 }
 
 //store selected option inside the camera object and enable add to cart button when option is selected
 function StoreSelOption(list, btn, selObject) {
-  //TODO test that the following function stores a lense value
   list.addEventListener("click", function () {
     let selectedLense = list.options[list.selectedIndex];
     selObject.cam_option = selectedLense.text;
-    console.log(selObject);
     if (selectedLense.value == "") {
       btn.disabled = true;
       alert("Merci de choisir une lentille");
@@ -52,14 +47,12 @@ function StoreSelOption(list, btn, selObject) {
 //storing the camera object in local storage as long as its id and options are not undefined, and open modal
 function addToCart(btn, selObject) {
   btn.addEventListener("click", function () {
-    //FIXME stores only current camera in array
     let camArray = [];
     camArray = JSON.parse(localStorage.getItem("camArray")) || [];
     if (selObject.cam_id != undefined && selObject.cam_option != undefined) {
       checkLengthArr(selObject, camArray);
       camArray.push(selObject);
       localStorage.setItem("camArray", JSON.stringify(camArray));
-      console.log(camArray);
     } else {
       alert = "Pas de caméra ajoutée au panier";
     }
@@ -70,29 +63,22 @@ function addToCart(btn, selObject) {
 
 //checking if camArray's length is more than 0 (first camera being added)
 function checkLengthArr(currentItem, array) {
-  console.log("checking length");
   if (array.length === 0) {
     currentItem.cam_amount = 1;
-    console.log("camArray length is 0");
-    console.log(currentItem.cam_amount);
   } else {
-    console.log(currentItem, array);
     checkIdenticalCams(currentItem, array);
   }
 }
 
 //if more than one camera in the array, check if they are identical
 function checkIdenticalCams(currentItem, array) {
-  console.log("length is greater than 0");
   for (i = 0; i < array.length; i++) {
     if (
       currentItem.cam_id === array[i].cam_id &&
       currentItem.cam_option === array[i].cam_option
     ) {
       array[i].cam_amount += 1;
-      console.log(array[i].cam_amount);
       currentItem.cam_amount = array[i].cam_amount;
-      console.log(currentItem.cam_amount);
     } else {
       currentItem.cam_amount = 1;
     }
@@ -105,9 +91,7 @@ function loadData() {
   xhr.open("GET", camerasUrl, true);
 
   xhr.onload = function () {
-    // console.log(this.status);
-    //FIXME promises instead of callbacks
-    //TODO TEST the status
+
     if (this.status == 200) {
       cameras = JSON.parse(this.responseText);
 
@@ -126,8 +110,6 @@ function loadData() {
       let allLenses = cameras.lenses;
 
       let lenseSelectList = document.getElementById("select_lense");
-
-      console.log(camObject);
 
       promise
         .then(populateHTML(cameras), returnErrorHTML)
