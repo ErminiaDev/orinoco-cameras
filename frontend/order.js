@@ -1,4 +1,6 @@
 /* ****************GETTING AND PARSING LOCALSTORAGE INFO***************** */
+//retrieving total amount
+let total = localStorage.getItem('total');
 
 //contact object
 let contactObj = JSON.parse(localStorage.getItem('contactObject'));
@@ -37,7 +39,7 @@ xhr.onload = function () {
   if (this.status == 201) {
     var order = JSON.parse(this.responseText);
     let successMsg = document.querySelector(".success-message");
-    successMsg.textContent = "Merci pour votre achat  " + order.contact.firstName + " " + order.contact.lastName + ". Votre numéro de commande est le suivant: " + order.orderId + "."
+    successMsg.textContent = "Merci pour votre achat  " + order.contact.firstName + " " + order.contact.lastName + " d'un montant de " + total + " €. Votre numéro de commande est le suivant: " + order.orderId + "."
   } else {
   }
 };

@@ -58,6 +58,8 @@ let total = function calcTotal() {
   return totalAmount;
 }();
 
+localStorage.setItem('total', total);
+
 function displayTotal() {
   let lastCartRow = document.createElement("tfoot");
   lastCartRow.id = "tfooter";
