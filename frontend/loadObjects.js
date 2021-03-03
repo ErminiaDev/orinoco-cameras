@@ -74,23 +74,27 @@ function loadData(){
   xhr.open("GET", camerasUrl, true);
   xhr.onload = function (){
 
-    if (this.status == 200) {
-      cameras = JSON.parse(this.responseText);
+  const promise = new Promise((resolve,reject) => {
+      if (this.status == 200){
+        resolve();
+      } else {
+        reject();
+      }
+  });      
       
-      promise
-        .then(displayObjects, returnErrorHTML)
-        .then(StoreSelectedCam, returnErrorStore)
-      ;    
-    }
+  promise
+    .then(()=>cameras = JSON.parse(this.responseText))
+    .then(displayObjects, returnErrorHTML)
+    .then(StoreSelectedCam, returnErrorStore)
+  ;    
+
   };
   xhr.send();
 }
 
-/*************************promises***************************/
+loadData();
 
-function returnError(){
-  alert('Une erreur s\'est produite dans le chargement des données depuis le serveur');
-};
+/*************************promises***************************/
 
 function returnErrorHTML(){
   alert('Une erreur s\'est produite dans le chargement des données de la caméra');
@@ -100,12 +104,4 @@ function returnErrorStore(){
     alert('Une erreur s\'est produite dans lors du choix de la caméra');
   };
 
-const promise = new Promise((resolve,reject) => {
-      resolve();
-      reject();
-  });
-
-promise
-  .then(loadData, returnError)
-;   
 
