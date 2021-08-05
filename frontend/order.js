@@ -40,8 +40,7 @@ xhr.onload = function () {
     var order = JSON.parse(this.responseText);
     let successMsg = document.querySelector(".success-message");
     successMsg.textContent = "Merci pour votre achat  " + order.contact.firstName + " " + order.contact.lastName + " d'un montant de " + total + " €. Votre numéro de commande est le suivant: " + order.orderId + "."
-  } else {
-  }
+  } 
 };
 
 xhr.setRequestHeader("Content-type", "application/json");
