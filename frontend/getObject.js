@@ -3,7 +3,7 @@
 const cameraId = localStorage.getItem("cameraId");
 
 //TODO TEST that an ID is recieved on this page
-camerasUrl = `http://localhost:3000/api/cameras/${cameraId}`;
+camerasUrl = `http://localhost:5000/api/cameras/${cameraId}`;
 
 let cameras;
 

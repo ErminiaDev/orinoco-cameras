@@ -65,7 +65,7 @@ function displayObjects(){
 
 /******************************* getting cameras from API *****************************/
 
-camerasUrl = "http://localhost:3000/api/cameras";
+camerasUrl = "http://localhost:5000/api/cameras";
 
 let cameras;
 
