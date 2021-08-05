@@ -65,7 +65,7 @@ function displayObjects(){
 
 /******************************* getting cameras from API *****************************/
 
-camerasUrl = "http://localhost:5000/api/cameras";
+camerasUrl = "https://orinoco-cameras-mvp.herokuapp.com/api/cameras";
 
 let cameras;
 

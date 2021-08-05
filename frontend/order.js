@@ -28,7 +28,7 @@ finalObj.products = camIdArray;
 
 
 /* *****************POSTING FINAL OBJECT****************** */
-camerasUrl = `http://localhost:5000/api/cameras/order`;
+camerasUrl = `https://orinoco-cameras-mvp.herokuapp.com/api/cameras/order`;
 
 var xhr = new XMLHttpRequest();
 
